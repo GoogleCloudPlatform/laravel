@@ -1,4 +1,5 @@
 <?php
+// Copyright 2015 Google Inc. All Rights Reserved.
 
 return [
 
@@ -95,7 +96,7 @@ return [
 	|
 	*/
 
-	'log' => 'daily',
+	'log' => env('LOG_DRIVER', 'daily'),
 
 	/*
 	|--------------------------------------------------------------------------

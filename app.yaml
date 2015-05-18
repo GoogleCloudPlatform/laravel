@@ -1,0 +1,30 @@
+# Copyright 2015 Google Inc. All Rights Reserved.
+application: <project-id>
+version: 1
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /favicon\.ico
+  static_files: public/favicon.ico
+  upload: public/favicon\.ico
+
+- url: /.*
+  script: public/index.php
+
+env_variables:
+  # Uncomment the following to enable debug mode.
+  # APP_DEBUG: '1'
+
+  DB_HOST: ':/cloudsql/<project-id>/<instance-id>'
+  DB_USERNAME: 'root'
+  DB_PASSWORD: ''
+  DB_DATABASE: '<database-name>'
+
+  CACHE_DRIVER: 'memcached'
+  SESSION_DRIVER: 'memcached'
+  MAIL_DRIVER: 'mail'
+  LOG_DRIVER: 'syslog'
+
+  STORAGE_PATH: 'gs://#default#/laravel/storage'

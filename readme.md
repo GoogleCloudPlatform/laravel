@@ -1,23 +1,40 @@
-## Laravel PHP Framework
+## [Laravel](http://laravel.com/) for [Google App Engine](https://cloud.google.com/appengine/)
+This repository contains a modified Laravel Starter app for Google App Engine.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+1. Clone the repository with
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+        git clone https://github.com/GoogleCloudPlatform/laravel.git
 
-## Official Documentation
+1. Follow the [PHP Tutorial](https://cloud.google.com/appengine/docs/php/gettingstarted/introduction) if you have never used App Engine before.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+1. Create a CloudSQL instance based on [these instructions](https://cloud.google.com/appengine/docs/php/cloud-sql/#create). Also [create a database](https://cloud.google.com/sql/docs/create-database) for storing the [Eloquent ORM](http://laravel.com/docs/5.0/eloquent).
+
+1. Replace `<project-id>`, `<instance-id>` and `<database-name>` in [app.yaml](app.yaml) with the corresponding value for your Google Cloud project and ClouSQL instance. By default, the app will store the cache files and logs at a specific location in the app's default GCS bucket. This can be changed by altering the `STORAGE_PATH` environmental variable in [app.yaml](app.yaml). Remember to also update `google_app_engine.allow_include_gs_buckets` to match the new value in [php.ini](php.ini).
+
+1. Install [composer](https://getcomposer.org/) if you haven't done so previously. To install all required dependencies, run the following command from your project's root, which is the directory that contains [composer.json](composer.json).
+
+        php composer.phar install
+
+1. [Deploy your app](https://cloud.google.com/appengine/docs/php/gettingstarted/uploading).
+
+1. Access your app using http://your_project_id.appspot.com/ and you should see Laravel's default welcome page.
+
+## Troubleshooting
+
+1. If Composer fails to download the dependencies, make sure that your local PHP installation satisfies Composer's [system requirements](https://getcomposer.org/doc/00-intro.md#system-requirements). Specifically, [cURL](http://php.net/manual/en/book.curl.php) support is required.
+
+1. If you see errors about missing the default Cloud Storage bucket, follow the [cloud integration instructions](https://cloud.google.com/appengine/docs/php/googlestorage/setup) to create a default bucket for your project.
 
 ## Contributing
+Have a patch that will benefit this project? Awesome! Follow these steps to have it accepted.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+1. Please sign our [Contributor License Agreement](CONTRIB.md).
+1. Fork this Git repository and make your changes.
+1. Create a Pull Request
+1. Incorporate review feedback to your changes.
+1. Accepted!
 
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+## License
+All files in this repository are under the [MIT License](LICENSE) unless noted otherwise.

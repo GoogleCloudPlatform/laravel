@@ -1,4 +1,14 @@
 <?php
+// Copyright 2015 Google Inc. All Rights Reserved.
+
+class GaeApplication extends Illuminate\Foundation\Application {
+  public function storagePath() {
+    if (array_key_exists('STORAGE_PATH', $_SERVER)) {
+      return $_SERVER['STORAGE_PATH'];
+    }
+    return parent::storagePath();
+  }
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +21,7 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = new GaeApplication(
 	realpath(__DIR__.'/../')
 );
 
