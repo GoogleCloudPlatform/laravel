@@ -1,3 +1,9 @@
+![status: inactive](https://img.shields.io/badge/status-inactive-red.svg)
+
+This project is no longer actively developed or maintained.
+
+See the community tutorial for [Running Laravel on App Engine Standard](https://cloud.google.com/community/tutorials/run-laravel-on-appengine-standard) instead.
+
 ## [Laravel](http://laravel.com/) for [Google App Engine](https://cloud.google.com/appengine/)
 This repository contains a modified Laravel Starter app for Google App Engine.
 
